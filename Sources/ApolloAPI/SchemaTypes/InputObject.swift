@@ -2,7 +2,7 @@
 ///
 /// # See Also
 /// [GraphQLSpec - Input Objects](https://spec.graphql.org/draft/#sec-Input-Objects)
-public protocol InputObject: GraphQLOperationVariableValue, JSONEncodable, Hashable {
+public protocol InputObject: GraphQLOperationVariableValue, JSONEncodable, Hashable, Sendable {
   var __data: InputDict { get }
 }
 
@@ -20,7 +20,7 @@ extension InputObject {
 }
 
 /// A structure that wraps the underlying data dictionary used by `InputObject`s.
-public struct InputDict: GraphQLOperationVariableValue, Hashable {
+public struct InputDict: GraphQLOperationVariableValue, Hashable, Sendable {
 
   private var data: [String: any GraphQLOperationVariableValue]
 

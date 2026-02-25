@@ -6,7 +6,7 @@ import ApolloAPI
 /// Represents an error encountered during the execution of a GraphQL operation.
 ///
 ///  - SeeAlso: [The Response Format section in the GraphQL specification](https://facebook.github.io/graphql/#sec-Response-Format)
-public struct GraphQLError: Error, Hashable {
+public struct GraphQLError: Error, Hashable, Sendable {
   private let object: JSONObject
 
   public init(_ object: JSONObject) {

@@ -46,7 +46,7 @@ public protocol CompositeInlineFragment: CompositeSelectionSet, InlineFragment {
 }
 
 // MARK: - SelectionSet
-public protocol SelectionSet: Hashable, CustomDebugStringConvertible {
+public protocol SelectionSet: Hashable, Sendable, CustomDebugStringConvertible {
   associatedtype Schema: SchemaMetadata
 
   /// A type representing all of the named fragments the `SelectionSet` can be converted to.

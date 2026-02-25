@@ -5,7 +5,7 @@ import ApolloAPI
 #endif
 
 /// A cache policy that specifies whether results should be fetched from the server or loaded from the local cache.
-public enum CachePolicy: Hashable {
+public enum CachePolicy: Hashable, Sendable {
   /// Return data from the cache if available, else fetch results from the server.
   case returnCacheDataElseFetch
   ///  Always fetch results from the server.
@@ -25,7 +25,7 @@ public enum CachePolicy: Hashable {
 ///
 /// - Parameters:
 ///   - result: The result of a performed operation. Will have a `GraphQLResult` with any parsed data and any GraphQL errors on `success`, and an `Error` on `failure`.
-public typealias GraphQLResultHandler<Data: RootSelectionSet> = (Result<GraphQLResult<Data>, any Error>) -> Void
+public typealias GraphQLResultHandler<Data: RootSelectionSet> = @Sendable (Result<GraphQLResult<Data>, any Error>) -> Void
 
 /// The `ApolloClient` class implements the core API for Apollo by conforming to `ApolloClientProtocol`.
 public class ApolloClient {

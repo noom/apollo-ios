@@ -1,7 +1,7 @@
 import Foundation
 
 /// A structure that wraps the underlying data for a ``SelectionSet``.
-public struct DataDict: Hashable {
+public struct DataDict: Hashable, @unchecked Sendable {
   @usableFromInline var _storage: _Storage
 
   /// The underlying data for a `SelectionSet`.

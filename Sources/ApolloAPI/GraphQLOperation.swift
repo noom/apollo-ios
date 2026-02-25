@@ -67,7 +67,7 @@ public struct DeferredFragmentIdentifier: Hashable {
 
 // MARK: - GraphQLOperation
 
-public protocol GraphQLOperation: AnyObject, Hashable {
+public protocol GraphQLOperation: Hashable, Sendable {
   typealias Variables = [String: any GraphQLOperationVariableValue]
 
   static var operationName: String { get }

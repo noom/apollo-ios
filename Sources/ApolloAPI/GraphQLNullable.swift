@@ -127,6 +127,8 @@ public enum GraphQLNullable<Wrapped> {
 
 }
 
+extension GraphQLNullable: Sendable where Wrapped: Sendable { }
+
 // MARK: - ExpressibleBy Literal Extensions
 
 extension GraphQLNullable: ExpressibleByNilLiteral {
