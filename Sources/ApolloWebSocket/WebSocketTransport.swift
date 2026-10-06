@@ -586,7 +586,8 @@ extension WebSocketTransport: WebSocketClientDelegate {
     }
 
     DispatchQueue.main.asyncAfter(deadline: .now() + config.reconnectionInterval) { [weak self] in
-      guard let self = self else { return }
+      // A pause during the interval turns auto-reconnect off; don't reopen a socket it closed.
+      guard let self = self, self.reconnect else { return }
       self.$socketConnectionState.mutate { socketConnectionState in
         switch socketConnectionState {
         case .disconnected, .connected:
